@@ -1,6 +1,3 @@
-# -----------------
-# Python
-# -----------------
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -22,16 +19,11 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# Virtual Environment
-venv/
-ENV/
-env/
-env.bak/
-venv.bak/
+MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -46,15 +38,14 @@ pip-delete-this-directory.txt
 # Unit test / coverage reports
 htmlcov/
 .tox/
-.nox/
 .coverage
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
 .hypothesis/
+.pytest_cache/
 
 # Translations
 *.mo
@@ -81,22 +72,23 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# IPython
-profile_default/
-ipython_config.py
-
 # pyenv
 .python-version
 
 # celery beat schedule file
 celerybeat-schedule
 
-# dotenv
-.env
-.env.*
+# SageMath parsed files
+*.sage.py
 
-# Virtualenv
-.virtualenv
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -105,47 +97,5 @@ celerybeat-schedule
 # Rope project settings
 .ropeproject
 
-# Editor directories and files
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-
-
-# -----------------
-# Vue / Node.js
-# -----------------
-# Dependency directories
-node_modules/
-
-# Build output
-dist/
-build/
-
-# Vite cache
-.vite/
-
-# Optional npm cache directory
-.npm
-
-# Optional yarn cache directory
-.yarn-cache/
-
-# Optional IDE or Editor folders
-.DS_Store
-Thumbs.db
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Optional local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Misc
-*.log
-
+# mypy
+.mypy_cache/
