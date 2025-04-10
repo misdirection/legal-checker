@@ -1,4 +1,4 @@
-from blacksheep import json, Response
+from blacksheep import json, Response, FromFiles
 from blacksheep.server.controllers import Controller, post
 from typing import Optional
 import PyPDF2
@@ -19,10 +19,8 @@ class LegalCheckerController(Controller):
         return "LegalChecker"
 
     @post("/upload")
-    async def upload_pdf(self, request) -> Response:
+    async def upload_pdf(self, request, files: FromFiles) -> Response:
         form = await request.form()
-        print("Verfügbare Form-Felder:", list(form.keys()))
-
         file_field = form.get("file")
         user_prompt = form.get("prompt")
 
@@ -34,14 +32,9 @@ class LegalCheckerController(Controller):
         if not uploaded_file:
             return json({"error": "Bitte eine PDF-Datei hochladen."}, status=400)
 
-        file_name = uploaded_file.file_name
+        file_name = uploaded_file.file_name.decode("utf-8")
         content_type = uploaded_file.content_type
         file_bytes = uploaded_file.data  # statt uploaded_file.read()
-
-        print("Typ des Dateiobjekts:", type(uploaded_file))
-        print("Dateiname:", file_name)
-        print("Content-Type:", content_type)
-        print("Dateigröße (Bytes):", len(file_bytes))
 
         if not (file_name and file_name.lower().endswith(".pdf")):
             return json({"error": "Bitte eine PDF-Datei hochladen."}, status=400)
