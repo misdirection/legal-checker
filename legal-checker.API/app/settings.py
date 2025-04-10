@@ -32,8 +32,6 @@ class Settings(BaseSettings):
     # export app_app='{"show_error_details": True}'
     app: App = App()
 
-    site: Site = Site()
-
     model_config = SettingsConfigDict(env_prefix='APP_')
 
 

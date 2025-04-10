@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install make \
     libnss3-dev \
     libreadline-dev \
     libffi-dev \
-    libjpeg-dev \
     zlib1g-dev \
     wget
 COPY . /home
@@ -33,12 +32,11 @@ FROM python:3.13.1-slim
 WORKDIR /home
 COPY --from=server_builder /home/ /home/
 
-ENV APP_ENV=prod BG_COLOR="#1abc9c" APP_ROUTE_PREFIX=""
+ENV APP_ENV=prod APP_ROUTE_PREFIX=""
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 RUN apt-get update && apt-get install \
     ca-certificates \
     sqlite3 \
     libsqlite3-dev \
-    libjpeg-dev \
     zlib1g-dev
 CMD ["sh", "-c", ". venv/bin/activate && uvicorn \"app.main:app\" --host 0.0.0.0 --port 80 --log-level info"]

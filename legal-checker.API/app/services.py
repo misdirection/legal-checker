@@ -20,4 +20,5 @@ def configure_services() -> Tuple[Container, Settings]:
     settings = load_settings()
 
     container.add_instance(settings)
+
     return container, settings

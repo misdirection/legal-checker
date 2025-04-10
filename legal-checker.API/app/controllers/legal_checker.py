@@ -34,8 +34,7 @@ class LegalCheckerController(Controller):
 
         file_name = uploaded_file.file_name.decode("utf-8")
         content_type = uploaded_file.content_type
-        file_bytes = uploaded_file.data  # statt uploaded_file.read()
-
+        file_bytes = uploaded_file.data
         if not (file_name and file_name.lower().endswith(".pdf")):
             return json({"error": "Bitte eine PDF-Datei hochladen."}, status=400)
         if not user_prompt:

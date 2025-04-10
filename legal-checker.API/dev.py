@@ -4,7 +4,6 @@ application for production.
 
 Refer to https://www.uvicorn.org/deployment/ for production deployments.
 """
-
 import os
 
 import uvicorn
@@ -28,15 +27,13 @@ if __name__ == "__main__":
         prefix = prefix.strip("/") + "/"
     console = Console()
     console.rule("[bold yellow]Running for local development", align="left")
-    console.print(f"[bold yellow]Visit http://localhost:{port}/{prefix}\n")
+    console.print(f"[bold yellow]Visit http://localhost:{port}/{prefix}docs/\n")
 
-    root_path = os.environ.get("APP_ROOT_PATH", "")
     uvicorn.run(
         "app.main:app",
         host="localhost",
         port=port,
         lifespan="on",
         log_level="info",
-        reload=False,
-        root_path=root_path,
+        reload=True,
     )
